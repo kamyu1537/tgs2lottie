@@ -1,9 +1,15 @@
 # TGS to Lottie
 telegram animated sticker to discord animated sticker! :D
 
-# Download
+## Download
 [build download](/bin/tgs2lottie320.exe)
 
-# How to use?
+## How to use?
 1. Drag and drop the telegram animated sticker to tgs2lottie320.exe
 2. Done!
+
+## Build
+```shell
+npm ci
+npm run build:win
+```
