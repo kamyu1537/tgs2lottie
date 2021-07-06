@@ -43,17 +43,21 @@ function bytesToString(bytes: Uint8Array): string {
     return result;
 }
 
-export function convert(tgs: Buffer, resize = 512): string {
+export function convert(tgs: Uint8Array, size = 512): string {
+    if (size < 1) {
+        throw new Error("Size must be at least 1!");
+    }
+
     let json: LottieAnimation = { layers: [] };
 
     try {
         const unzip = pako.ungzip(tgs);
         json = JSON.parse(bytesToString(unzip));
     } catch {
-        json = JSON.parse(tgs.toString('utf-8'));
+        json = JSON.parse(bytesToString(tgs));
     }
 
-    const scale = resize / 512;
+    const scale = size / 512;
     json.w = (json.w || 512) * scale;
     json.h = (json.h || 512) * scale;
 
