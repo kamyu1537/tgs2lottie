@@ -1,10 +1,4 @@
-#!/usr/bin/env node
-
 import zlib from 'zlib';
-import fs from 'fs';
-import path from 'path';
-import yargs from 'yargs/yargs';
-import { hideBin } from 'yargs/helpers';
 
 interface OffsetKeyframe {
     s: number[];
@@ -41,7 +35,7 @@ function changeValue(value: number | OffsetKeyframe, scale: number): number | Of
     return value;
 }
 
-export function convert(tgs: Buffer, resize: number = 512): string {
+export function convert(tgs: Buffer, resize = 512): string {
     let json: LottieAnimation = { layers: [] };
 
     try {
@@ -71,26 +65,3 @@ export function convert(tgs: Buffer, resize: number = 512): string {
 }
 
 export default convert;
-
-// node
-if (require.main === module) {
-    const argv: any = yargs(hideBin(process.argv))
-        .usage('Usage: $0 [--resize=512] <filepath>')
-        .option('resize', { desc: 'change sticker size', default: 512 })
-        .example('$0 --resize=320 .\/AnimatedSticker.tgs', 'Convert AnimatedSticker.tgs to 320 size Lottie animation json')
-        .argv;
-        
-    const filepath = argv._[0] || undefined;
-    if (!filepath) {
-        throw new Error('filepath required')
-    }
-
-    let resize: number = Number(argv.resize) || 512;
-    if (!Number.isInteger(resize)) resize = 512;
-
-    const p = path.parse(filepath as string);
-    const tgs = fs.readFileSync(filepath as string);
-    const json = convert(tgs, resize);
-    
-    fs.writeFileSync(path.join(p.dir, p.name + '_' + resize + '.json'), json);
-}

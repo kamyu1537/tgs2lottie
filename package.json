@@ -1,13 +1,13 @@
 {
   "name": "tgs2lottie",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "telegram animated sticker to lottie animation json",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc"
   },
   "bin": {
-    "tgs2lottie": "dist/index.js"
+    "tgs2lottie": "dist/shell.js"
   },
   "repository": {
     "type": "git",
@@ -33,6 +33,7 @@
     "typescript": "^4.3.5"
   },
   "dependencies": {
+    "chalk": "^4.1.1",
     "yargs": "^17.0.1"
   }
 }

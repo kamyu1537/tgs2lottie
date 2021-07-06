@@ -10,7 +10,8 @@
     "forceConsistentCasingInFileNames": true
   },
   "include": [
-    "src/index.ts"
+    "src/index.ts",
+    "src/cli.ts"
   ],
   "exclude": [
     "node_modules/**/*"
