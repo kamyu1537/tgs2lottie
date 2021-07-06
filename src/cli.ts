@@ -20,7 +20,7 @@ import { convert } from './index';
         .argv;
 
     const filepath = argv._[0] + "";
-    let size: number = argv.s || 512;
+    let size: number = argv.s == null ? 512 : argv.s;
     if (!Number.isInteger(size)) size = 512;
 
     try {
