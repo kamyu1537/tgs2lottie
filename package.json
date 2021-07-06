@@ -1,6 +1,6 @@
 {
   "name": "tgs2lottie",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "telegram animated sticker to lottie animation json",
   "main": "dist/index.js",
   "scripts": {
