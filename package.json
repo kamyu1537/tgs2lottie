@@ -7,7 +7,7 @@
     "build": "tsc"
   },
   "bin": {
-    "tgs2lottie": "dist/shell.js"
+    "tgs2lottie": "dist/cli.js"
   },
   "repository": {
     "type": "git",
