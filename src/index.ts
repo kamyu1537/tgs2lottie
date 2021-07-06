@@ -26,7 +26,7 @@ interface LottieAnimation {
     layers?: LottieLayer[];
 }
 
-function changeValue(value: number | OffsetKeyframe, scale: number): number | OffsetKeyframe {
+function scaleValue(value: number | OffsetKeyframe, scale: number): number | OffsetKeyframe {
     if (typeof value === 'number') value = value * scale;
     if (typeof value === 'object') {
         if (value.s != null) value.s = value.s.map(v => v * scale);
@@ -53,8 +53,8 @@ export function convert(tgs: Buffer, resize = 512): string {
         for (const layer of json.layers) {
             if (layer.ks != null) {
                 if (layer.parent == null) {
-                    if (layer.ks?.p != null) layer.ks.p.k = layer.ks.p.k.map(v => changeValue(v, scale));
-                    if (layer.ks?.s != null) layer.ks.s.k = layer.ks.s.k.map(v => changeValue(v, scale));
+                    if (layer.ks?.p != null) layer.ks.p.k = layer.ks.p.k.map(v => scaleValue(v, scale));
+                    if (layer.ks?.s != null) layer.ks.s.k = layer.ks.s.k.map(v => scaleValue(v, scale));
                     else layer.ks.s = { a: 0, k: [100 * scale, 100 * scale, 100 * scale] };
                 }
             }
