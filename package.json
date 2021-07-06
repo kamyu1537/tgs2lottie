@@ -1,15 +1,38 @@
 {
-  "name": "tgs2lottie320",
+  "name": "tgs2lottie",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "telegram animated sticker to lottie animation json",
+  "main": "dist/index.js",
   "scripts": {
-    "build:win": "pkg index.js --output bin/tgs2lottie320.exe"
+    "build": "tsc",
+    "prebuild:win": "npm run build",
+    "build:win": "pkg dist/index.js --output bin/tgs2lottie.exe"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kamyu1537/tgs2lottie.git"
+  },
+  "keywords": [
+    "tgs",
+    "telegram",
+    "lottie"
+  ],
+  "bugs": {
+    "url": "https://github.com/kamyu1537/tgs2lottie/issues"
+  },
+  "homepage": "https://github.com/kamyu1537/tgs2lottie#readme",
+  "author": "Byeon Seongun <kamyu1537@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^16.0.0",
-    "pkg": "^5.3.0"
+    "@types/yargs": "^17.0.2",
+    "@typescript-eslint/eslint-plugin": "^4.28.2",
+    "@typescript-eslint/parser": "^4.28.2",
+    "eslint": "^7.30.0",
+    "pkg": "^5.3.0",
+    "typescript": "^4.3.5"
+  },
+  "dependencies": {
+    "yargs": "^17.0.1"
   }
 }
