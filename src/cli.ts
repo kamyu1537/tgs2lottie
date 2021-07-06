@@ -10,8 +10,7 @@ import { convert } from './index';
 
 (async () => {
     const argv = await yargs(hideBin(process.argv))
-        .usage('Usage:\ntgs2lottie [--resize=512] <filepath>\ntgs2lottie [--resize=512] --file=./AnimatedSticker.tgs')
-        .example('tgs2lottie --resize=320 ./AnimatedSticker.tgs', 'Convert AnimatedSticker.tgs to 320 size Lottie animation json')
+        .example('$0 --resize=320 ./AnimatedSticker.tgs', 'Convert AnimatedSticker.tgs to 320 size Lottie animation json')
         .alias('s', 'resize')
         .describe('s', 'change sticker size')
         .default('s', 512)
