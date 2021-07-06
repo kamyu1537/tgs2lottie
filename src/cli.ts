@@ -10,18 +10,23 @@ import { convert } from './index';
 
 (async () => {
     const argv = await yargs(hideBin(process.argv))
-        .usage('Usage: $0 [--resize=512] <filepath>')
-        .option('resize', { desc: 'change sticker size', default: 512 })
-        .example('$0 --resize=320 ./AnimatedSticker.tgs', 'Convert AnimatedSticker.tgs to 320 size Lottie animation json')
+        .usage('Usage:\ntgs2lottie [--resize=512] <filepath>\ntgs2lottie [--resize=512] --file=./AnimatedSticker.tgs')
+        .example('tgs2lottie --resize=320 ./AnimatedSticker.tgs', 'Convert AnimatedSticker.tgs to 320 size Lottie animation json')
+        .alias('s', 'resize')
+        .describe('s', 'change sticker size')
+        .default('s', 512)
+        .nargs('s', 1)
+        .command('<filepath> [--resize=512]', '')
+        .demandCommand()
         .argv;
 
-    const filepath = argv._[0] || undefined;
+    const filepath = argv._[0];
     if (!filepath) {
         console.log(chalk.yellow('⚠  filepath is required!!'));
         return;
     }
 
-    let resize: number = Number(argv.resize as number) || 512;
+    let resize: number = argv.s || 512;
     if (!Number.isInteger(resize)) resize = 512;
 
     try {
