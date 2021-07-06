@@ -52,8 +52,8 @@ export function convert(tgs: Buffer, resize: number = 512): string {
     }
 
     const scale = resize / 512;
-    json.w = resize;
-    json.h = resize;
+    json.w = (json.w || 512) * scale;
+    json.h = (json.h || 512) * scale;
 
     if (json.layers != null) {
         for (const layer of json.layers) {
