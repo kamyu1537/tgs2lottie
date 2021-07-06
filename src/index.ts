@@ -1,4 +1,4 @@
-import zlib from 'zlib';
+import pako from 'pako';
 
 interface OffsetKeyframe {
     s: number[];
@@ -35,12 +35,20 @@ function scaleValue(value: number | OffsetKeyframe, scale: number): number | Off
     return value;
 }
 
+function bytesToString(bytes: Uint8Array): string {
+    let result = "";
+    for (let i = 0; i < bytes.length; ++i) {
+        result += String.fromCharCode(bytes[i]);
+    }
+    return result;
+}
+
 export function convert(tgs: Buffer, resize = 512): string {
     let json: LottieAnimation = { layers: [] };
 
     try {
-        const unzip = zlib.gunzipSync(tgs);
-        json = JSON.parse(unzip.toString('utf-8'));
+        const unzip = pako.ungzip(tgs);
+        json = JSON.parse(bytesToString(unzip));
     } catch {
         json = JSON.parse(tgs.toString('utf-8'));
     }
