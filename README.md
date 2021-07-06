@@ -2,7 +2,6 @@
 telegram animated sticker to lottie animation json! :D
 
 ## Download
-#### [window](bin/tgs2lottie.exe)
 ### NPM
 ```shell
 npm install --save tgs2lottie
@@ -27,10 +26,4 @@ tgs2lottie --resize 320 ./AnimatedSticker.tgs
 ```shell
 npm ci
 npm run build
-```
-
-### Windows
-```shell
-npm ci
-npm run build:win
 ```

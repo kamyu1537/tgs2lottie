@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import zlib from 'zlib';
 import fs from 'fs';
 import path from 'path';
