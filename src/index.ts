@@ -74,21 +74,23 @@ export default convert;
 
 // node
 if (require.main === module) {
-    (async () => {
-        const argv = await yargs(hideBin(process.argv)).argv;
-        const filepath = argv._[0] || argv.file || undefined;
-
-        if (!filepath) {
-            throw new Error('filepath required')
-        }
-
-        let resize: number = Number(argv.resize) || 512;
-        if (!Number.isInteger(resize)) resize = 512;
-
-        const p = path.parse(filepath as string);
-        const tgs = fs.readFileSync(filepath as string);
-        const json = convert(tgs, resize);
+    const argv: any = yargs(hideBin(process.argv))
+        .usage('Usage: $0 [--resize=512] <filepath>')
+        .option('resize', { desc: 'change sticker size', default: 512 })
+        .example('$0 --resize=320 .\/AnimatedSticker.tgs', 'Convert AnimatedSticker.tgs to 320 size Lottie animation json')
+        .argv;
         
-        fs.writeFileSync(path.join(p.dir, p.name + '_' + resize + '.json'), json);
-    })();
+    const filepath = argv._[0] || undefined;
+    if (!filepath) {
+        throw new Error('filepath required')
+    }
+
+    let resize: number = Number(argv.resize) || 512;
+    if (!Number.isInteger(resize)) resize = 512;
+
+    const p = path.parse(filepath as string);
+    const tgs = fs.readFileSync(filepath as string);
+    const json = convert(tgs, resize);
+    
+    fs.writeFileSync(path.join(p.dir, p.name + '_' + resize + '.json'), json);
 }
