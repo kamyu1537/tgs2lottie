@@ -1,6 +1,6 @@
 {
   "name": "tgs2lottie",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "telegram animated sticker to lottie animation json",
   "main": "dist/index.js",
   "scripts": {
@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/kamyu1537/tgs2lottie#readme",
   "author": "Byeon Seongun <kamyu1537@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@types/node": "^16.0.0",
     "@types/pako": "^1.0.1",
