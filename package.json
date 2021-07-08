@@ -4,7 +4,8 @@
   "description": "telegram animated sticker to lottie animation json",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "prepublish": "npm run build"
   },
   "bin": {
     "tgs2lottie": "dist/cli.js"
