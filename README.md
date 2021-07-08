@@ -1,8 +1,7 @@
 # TGS2Lottie
 [![npm](https://img.shields.io/npm/v/tgs2lottie)](https://www.npmjs.com/package/tgs2lottie)  
-telegram animated sticker to lottie animation json! :D
----
-[web](https://kamyu1537.github.io/tgs2lottie-web/)
+telegram animated sticker to lottie animation json! :D  
+[Github Pages](https://kamyu1537.github.io/tgs2lottie-web/)
 
 ## Download
 ### NPM
@@ -21,7 +20,7 @@ console.info(convert(read));
 ```
 ### Shell
 ```shell
-tgs2lottie --resize 320 ./AnimatedSticker.tgs
+tgs2lottie --size 320 ./AnimatedSticker.tgs
 ```
 
 ## Build
