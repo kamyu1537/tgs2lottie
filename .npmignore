@@ -1,3 +1,6 @@
+.vscode/
+.idea/
+
 bin/
 src/
 node_modules/
