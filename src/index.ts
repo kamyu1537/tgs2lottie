@@ -57,7 +57,7 @@ export function convert(tgs: Uint8Array, size = 512): string {
         json = JSON.parse(bytesToString(tgs));
     }
 
-    const scale = size / 512;
+    const scale = size / (json.w || 512);
     json.w = (json.w || 512) * scale;
     json.h = (json.h || 512) * scale;
 
