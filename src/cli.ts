@@ -30,6 +30,6 @@ import { convert } from './index';
 
         fs.writeFileSync(path.join(p.dir, p.name + '_' + size + '.json'), json);
     } catch (err) {
-        console.log(chalk.red('❌', err.message));
+        console.log(chalk.red('❌', err));
     }
 })();
